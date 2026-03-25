@@ -1,0 +1,17 @@
+{
+  "name": "NYT Books Explorer",
+  "short_name": "NYT Books",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#1e293b",
+  "description": "Explora los Best Sellers del New York Times en esta Progressive Web App",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
