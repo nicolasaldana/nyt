@@ -23,7 +23,7 @@ app.use("/api/books", booksRoutes)
 app.use(express.static(path.resolve(__dirname, "..", "frontend")))
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "frontend", "index.html"))
+  res.sendFile(path.resolve(__dirname, "..", "index.html"))
 })
 
 // ================= SERVER =================

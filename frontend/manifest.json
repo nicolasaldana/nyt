@@ -3,8 +3,8 @@
   "short_name": "NYT Books",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#1e293b",
+  "background_color": "#FAFAFA",
+  "theme_color": "#FAFAFA",
   "description": "Explora los Best Sellers del New York Times en esta Progressive Web App",
   "icons": [
     {
