@@ -44,7 +44,14 @@ self.addEventListener('fetch', event => {
           });
           return response;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => 
+          caches.match(event.request).then(cachedResponse => {
+            return cachedResponse || new Response(
+              JSON.stringify({ error: 'Network error and no cache available' }),
+              { status: 503, headers: { 'Content-Type': 'application/json' } }
+            );
+          })
+        )
     );
   } else {
     // Cache First para recursos estáticos
@@ -64,6 +71,12 @@ self.addEventListener('fetch', event => {
                 cache.put(event.request, responseToCache);
               });
             return response;
+          }).catch(() => {
+             // Fallback para recursos estáticos si fallan red y caché
+             if (event.request.mode === 'navigate') {
+               return caches.match('./index.html');
+             }
+             return new Response('Network error', { status: 408 });
           });
         })
     );

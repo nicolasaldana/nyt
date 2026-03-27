@@ -1,4 +1,4 @@
-const URL = "http://localhost:3000/api/books"
+const URL = "/api/books"
 
 const contenedor = document.getElementById("contenedor")
 const loader = document.getElementById("loader")
