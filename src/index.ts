@@ -4,32 +4,33 @@ import path from "path"
 import { fileURLToPath } from "url"
 import booksRoutes from "./routes/books.js"
 
-const app = express()
-
-// fix __dirname en ES modules
+// FIX __dirname (PRIMERO SIEMPRE)
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+const app = express()
 
 // middlewares
 app.use(cors())
 app.use(express.json())
 
-// API
+// ================= API =================
 app.use("/api/books", booksRoutes)
 
 // ================= FRONTEND =================
 
-// servir archivos estáticos (RAÍZ DEL PROYECTO)
-app.use(express.static(path.resolve(__dirname, "..", "frontend")))
+// servir archivos estáticos
+app.use(express.static(path.join(__dirname, "../frontend")))
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "index.html"))
+// fallback (para SPA o rutas directas)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"))
 })
 
 // ================= SERVER =================
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`)
+  console.log(`Servidor corriendo en puerto ${PORT}`)
 })
