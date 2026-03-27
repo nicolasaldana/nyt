@@ -22,10 +22,8 @@ app.use("/api/books", booksRoutes)
 // ruta absoluta al frontend
 const frontendPath = path.resolve(process.cwd(), "frontend")
 
-// servir archivos estáticos
 app.use(express.static(frontendPath))
 
-// fallback (para cualquier ruta)
 app.use((req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"))
 })
