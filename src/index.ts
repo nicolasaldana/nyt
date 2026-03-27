@@ -4,13 +4,13 @@ import path from "path"
 import { fileURLToPath } from "url"
 import booksRoutes from "./routes/books.js"
 
-// FIX __dirname (PRIMERO SIEMPRE)
+// ================= FIX __dirname =================
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express()
 
-// middlewares
+// ================= MIDDLEWARES =================
 app.use(cors())
 app.use(express.json())
 
@@ -19,13 +19,16 @@ app.use("/api/books", booksRoutes)
 
 // ================= FRONTEND =================
 
-// servir archivos estáticos
-app.use(express.static(path.join(__dirname, "../frontend")))
+// ruta absoluta al frontend
+const frontendPath = path.resolve(__dirname, "..", "frontend")
 
-// fallback (para SPA o rutas directas)
+// servir archivos estáticos
+app.use(express.static(frontendPath))
+
+// fallback (para cualquier ruta)
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
-});
+  res.sendFile(path.join(frontendPath, "index.html"))
+})
 
 // ================= SERVER =================
 
