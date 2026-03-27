@@ -20,7 +20,7 @@ app.use("/api/books", booksRoutes)
 // ================= FRONTEND =================
 
 // ruta absoluta al frontend
-const frontendPath = path.resolve(__dirname, "..", "frontend")
+const frontendPath = path.resolve(process.cwd(), "frontend")
 
 // servir archivos estáticos
 app.use(express.static(frontendPath))
