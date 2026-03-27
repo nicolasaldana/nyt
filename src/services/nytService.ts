@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_KEY = "FEaVxAmbMBRngYkdZLRzGr5tBkJrfqm1Be1iiwkSPRAqjBV9"
+const API_KEY = process.env.NYT_API_KEY
 const BASE_URL = "https://api.nytimes.com/svc/books/v3"
 
 // 1. Best sellers (DINÁMICO)
