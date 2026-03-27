@@ -23,9 +23,9 @@ app.use("/api/books", booksRoutes)
 app.use(express.static(path.join(__dirname, "../frontend")))
 
 // fallback (para SPA o rutas directas)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"))
-})
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
 
 // ================= SERVER =================
 
