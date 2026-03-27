@@ -4,6 +4,8 @@ import path from "path"
 import { fileURLToPath } from "url"
 import booksRoutes from "./routes/books.js"
 
+
+console.log("VERSION NUEVA FUNCIONANDO")
 // ================= FIX __dirname =================
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
